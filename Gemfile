@@ -17,6 +17,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # Devise handles building a user model, routes for your users controller and OAuth (e.g. 'Log in with Facebook')
 gem 'devise'
 
+# Facebook omniauth gem
+gem 'omniauth-facebook'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
