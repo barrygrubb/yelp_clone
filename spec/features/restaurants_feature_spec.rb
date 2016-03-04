@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 feature 'restaurants' do
+
+  before do
+    User.create(email: 'test@example.com', password: 'testtest', password_confirmation: 'testtest')
+    visit('/')
+    click_link('Sign In')
+    fill_in('Email', with: 'test@example.com')
+    fill_in('Password', with: 'testtest')
+    click_button('Log in')
+  end
+
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
@@ -39,6 +49,17 @@ feature 'restaurants' do
         click_button 'Create Restaurant'
         expect(page).not_to have_css 'h2', text: 'kf'
         expect(page).to have_content 'error'
+      end
+    end
+
+    context 'not logged in' do
+      before do
+        click_link('Sign Out')
+      end
+
+      it 'can\'t add a restaurant' do
+        click_link('Add a restaurant')
+        expect(page).to have_content('Log in')
       end
     end
   end

@@ -44,6 +44,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'rspec-collection_matchers'
 end
 
