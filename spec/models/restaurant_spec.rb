@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Restaurant, type: :model do
   it { is_expected.to have_many :reviews }
+  it {is_expected.to belong_to :user }
 
   it 'is not valid with a name of less than three characters' do
     restaurant = Restaurant.new(name: 'kf')
@@ -14,7 +15,5 @@ describe Restaurant, type: :model do
     restaurant = Restaurant.new(name: "Moe's Tavern")
     expect(restaurant).to have(1).error_on(:name)
   end
-
-  it { is_expected.to belong_to :user }
 
 end
